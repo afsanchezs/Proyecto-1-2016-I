@@ -19,6 +19,7 @@ Linker script and memory map
 
 LOAD c:/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr4/crtatmega8515.o
 LOAD obj\Release\main.o
+LOAD obj\Release\procesador.o
 LOAD c:/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr4\libgcc.a
 LOAD C:\avr8-gnu-toolchain\avr\lib\libm.a
 START GROUP
@@ -118,7 +119,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000       0x3a
+.text           0x00000000      0x11a
  *(.vectors)
  .vectors       0x00000000       0x22 c:/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr4/crtatmega8515.o
                 0x00000000                __vector_default
@@ -188,30 +189,35 @@ END GROUP
                 0x00000032                __vector_14
                 0x00000032                __vector_10
                 0x00000032                __vector_16
- .text          0x00000034        0x0 obj\Release\main.o
- .text          0x00000034        0x0 c:/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr4\libgcc.a(_exit.o)
-                0x00000034                . = ALIGN (0x2)
+ .text          0x00000034       0x5e obj\Release\main.o
+                0x00000034                secuencias
+ .text          0x00000092       0x5c obj\Release\procesador.o
+                0x00000092                CPUInit
+                0x000000a4                CPUWrite
+                0x000000c0                CPURead
+ .text          0x000000ee        0x0 c:/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr4\libgcc.a(_exit.o)
+                0x000000ee                . = ALIGN (0x2)
  *(.text.*)
- .text.startup  0x00000034        0x2 obj\Release\main.o
-                0x00000034                main
+ .text.startup  0x000000ee       0x28 obj\Release\main.o
+                0x000000ee                main
  .text.libgcc.mul
-                0x00000036        0x0 c:/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr4\libgcc.a(_exit.o)
+                0x00000116        0x0 c:/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr4\libgcc.a(_exit.o)
  .text.libgcc.div
-                0x00000036        0x0 c:/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr4\libgcc.a(_exit.o)
- .text.libgcc   0x00000036        0x0 c:/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr4\libgcc.a(_exit.o)
+                0x00000116        0x0 c:/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr4\libgcc.a(_exit.o)
+ .text.libgcc   0x00000116        0x0 c:/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr4\libgcc.a(_exit.o)
  .text.libgcc.prologue
-                0x00000036        0x0 c:/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr4\libgcc.a(_exit.o)
+                0x00000116        0x0 c:/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr4\libgcc.a(_exit.o)
  .text.libgcc.builtins
-                0x00000036        0x0 c:/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr4\libgcc.a(_exit.o)
+                0x00000116        0x0 c:/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr4\libgcc.a(_exit.o)
  .text.libgcc.fmul
-                0x00000036        0x0 c:/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr4\libgcc.a(_exit.o)
+                0x00000116        0x0 c:/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr4\libgcc.a(_exit.o)
  .text.libgcc.fixed
-                0x00000036        0x0 c:/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr4\libgcc.a(_exit.o)
-                0x00000036                . = ALIGN (0x2)
+                0x00000116        0x0 c:/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr4\libgcc.a(_exit.o)
+                0x00000116                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000036        0x0 c:/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr4\libgcc.a(_exit.o)
-                0x00000036                _exit
-                0x00000036                exit
+ .fini9         0x00000116        0x0 c:/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr4\libgcc.a(_exit.o)
+                0x00000116                _exit
+                0x00000116                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -230,15 +236,16 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000036        0x4 c:/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr4\libgcc.a(_exit.o)
+ .fini0         0x00000116        0x4 c:/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr4\libgcc.a(_exit.o)
  *(.fini0)
-                0x0000003a                _etext = .
+                0x0000011a                _etext = .
 
-.data           0x00800060        0x0 load address 0x0000003a
+.data           0x00800060        0x0 load address 0x0000011a
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800060        0x0 c:/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr4/crtatmega8515.o
  .data          0x00800060        0x0 obj\Release\main.o
+ .data          0x00800060        0x0 obj\Release\procesador.o
  .data          0x00800060        0x0 c:/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr4\libgcc.a(_exit.o)
  *(.data*)
  *(.rodata)
@@ -253,12 +260,13 @@ END GROUP
  *(.bss)
  .bss           0x00800060        0x0 c:/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr4/crtatmega8515.o
  .bss           0x00800060        0x0 obj\Release\main.o
+ .bss           0x00800060        0x0 obj\Release\procesador.o
  .bss           0x00800060        0x0 c:/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr4\libgcc.a(_exit.o)
  *(.bss*)
  *(COMMON)
                 0x00800060                PROVIDE (__bss_end, .)
-                0x0000003a                __data_load_start = LOADADDR (.data)
-                0x0000003a                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x0000011a                __data_load_start = LOADADDR (.data)
+                0x0000011a                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00800060        0x0
                 0x00800060                PROVIDE (__noinit_start, .)
@@ -308,6 +316,7 @@ END GROUP
  *(.comment)
  .comment       0x00000000       0x30 obj\Release\main.o
                                  0x31 (size before relaxing)
+ .comment       0x00000030       0x31 obj\Release\procesador.o
 
 .note.gnu.avr.deviceinfo
                 0x00000000       0x40
@@ -382,6 +391,12 @@ LOAD linker stubs
 Cross Reference Table
 
 Symbol                                            File
+CPUInit                                           obj\Release\procesador.o
+                                                  obj\Release\main.o
+CPURead                                           obj\Release\procesador.o
+                                                  obj\Release\main.o
+CPUWrite                                          obj\Release\procesador.o
+                                                  obj\Release\main.o
 __bad_interrupt                                   c:/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr4/crtatmega8515.o
 __heap_end                                        c:/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr4/crtatmega8515.o
 __init                                            c:/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr4/crtatmega8515.o
@@ -409,3 +424,4 @@ exit                                              c:/avr8-gnu-toolchain/bin/../l
                                                   c:/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr4/crtatmega8515.o
 main                                              obj\Release\main.o
                                                   c:/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr4/crtatmega8515.o
+secuencias                                        obj\Release\main.o

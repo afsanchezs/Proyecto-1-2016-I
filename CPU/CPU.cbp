@@ -37,6 +37,11 @@
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="ports.h" />
+		<Unit filename="procesador.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="procesador.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
