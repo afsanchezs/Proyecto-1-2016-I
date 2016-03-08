@@ -2,4 +2,4 @@
 Andrés Felipe Sánchez 
 Nicolás Arias Mendoza
 
-**Agregar los archivos .MOD y .MDF a la carpeta MODELS de Proteus
+**Agregar los archivos de la carpeta Recursos a la carpeta MODELS de Proteus
