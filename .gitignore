@@ -1,1 +1,8 @@
 *.workspace*
+*.depend*
+*.layout*
+*.o*
+*.eep*
+*.elf*
+*.lss*
+*.map*
