@@ -1,4 +1,5 @@
 *.workspace*
+*.pdsbak*
 *.depend*
 *.layout*
 *.o*
