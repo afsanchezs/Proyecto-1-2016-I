@@ -7,3 +7,5 @@
 *.elf*
 *.lss*
 *.map*
+*.docx*
+*.tmp*
